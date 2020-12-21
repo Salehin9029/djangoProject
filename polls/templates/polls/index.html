@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{%  extends 'polls/base.html' %}
+{% block main_content %}
+
 {% if latest_questions %}
-{% for question in latest_questions %}
-    <ul>
-    <li><a href='/polls/{{question.id}}'><b>question.question_text</b></a></li>
-    </ul>
-{%  endfor %}
+<ul>
+    {% for question in latest_questions %}
+        <li><a href= {%  url "detail" question.id %}><b>{{question.question_text}}</b></a></li>
+    {%  endfor %}
+</ul>
+
 {% else %}
     <p>NO MORE QUESTIONS</p>
 {% endif %}
 
-</body>
-</html>
+{% endblock %}
